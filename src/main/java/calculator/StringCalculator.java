@@ -17,9 +17,17 @@ public class StringCalculator {
             input = input.substring(index + 1); // 실제 개행 처리
         }
 
-        String[] numbers = input.split(delimiter);
 
-        return 0;
+
+        String[] numbers = input.split(delimiter);
+        int sum = 0;
+        for (String num : numbers) {
+            if (num.isEmpty()) continue;
+            int number = parseNumber(num);
+            sum += number;
+        }
+        return sum;
+
     }
 
     private int parseNumber(String num) {
