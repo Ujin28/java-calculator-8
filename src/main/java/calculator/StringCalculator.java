@@ -21,4 +21,16 @@ public class StringCalculator {
 
         return 0;
     }
+
+    private int parseNumber(String num) {
+        try {
+            int value = Integer.parseInt(num);
+            if (value < 0) {
+                throw new IllegalArgumentException("양수만 입력하세요");
+            }
+            return value;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자가 아닌 값이 있습니다.");
+        }
+    }
 }
