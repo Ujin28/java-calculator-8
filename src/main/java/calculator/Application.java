@@ -1,7 +1,12 @@
 package calculator;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+
+        System.out.println("덧셈할 문자열을 입력해주세요");
+        String snum = Console.readLine(); // 입력 예: "1,2,3" 또는 "//;\n1;2;3"
+
     }
 }
