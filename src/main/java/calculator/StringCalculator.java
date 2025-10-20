@@ -13,10 +13,19 @@ public class StringCalculator {
         // 커스텀 구분자 처리
         if (input.startsWith("//")) {
             int index = input.indexOf("\n");
-            delimiter = Pattern.quote(input.substring(2, index));
-            input = input.substring(index + 1); // 실제 개행 처리
+            if (index == -1) {
+                // 입력창에서 \\n 문자열로 들어오는 경우 처리
+                index = input.indexOf("\\n");
+                if (index == -1) {
+                    throw new IllegalArgumentException("구분자 형식을 바꾸세요");
+                }
+                delimiter = Pattern.quote(input.substring(2, index));
+                input = input.substring(index + 2); // "\\n" 길이 2
+            } else {
+                delimiter = Pattern.quote(input.substring(2, index));
+                input = input.substring(index + 1); // 실제 개행 처리
+            }
         }
-
 
 
         String[] numbers = input.split(delimiter);
